@@ -3,7 +3,7 @@
 O pomodoro project foi feito utilizando a linguaguem python e a placa Arduino Uno, junto com as bibliotecas: 
   * Pyfirmata: Para realizar a comunicação entre a placa Arduino Uno e a linguagem python.
   * Time: Para controlar o delay das ações no código. 
-Peças utilizadas na placa Arduino Uno:
+**Peças utilizadas na placa Arduino Uno:**
    * Buzzer: Alarme
    * 3 leads: Verde, amarelo, vermelho
    * 3 botões: Branco(ou verde, escolha pessoal), amarelo, vermelho
