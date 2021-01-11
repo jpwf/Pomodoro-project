@@ -59,7 +59,7 @@ def relax():
 
 def endofbreak():
     board.digital[8].write(0)
-    sleep(2)
+    sleep(1)
     print('Lets go back to work')
     work()
 
