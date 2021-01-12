@@ -53,7 +53,7 @@ def relax():
     board.digital[7].write(1)
     sleep(0.08)
     board.digital[7].write(0)
-    print("End of the break \nPress the red buttom to go back work ")
+    print("End of the break \nPress the red buttom to go back work")
     if b3state == 1: 
         endofbreak()
 
