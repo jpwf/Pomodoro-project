@@ -114,6 +114,7 @@ class screen:
         self.texto3["text"] = "Finally done"
         self.action["command"] = self.reset
         self.msg["text"] = ""
+        self.msg["background"] = self.color0
         self.action["text"] = "Finish"
 
         
@@ -122,7 +123,8 @@ class screen:
         self.texto1["background"] = self.color0
         self.texto2["background"] = self.color0
         self.texto3["background"] = self.color0
-        self.action["command"] = self.c1
+        self.texto3["text"] = ""
+        self.action["command"] = self.t1
         self.action["text"] = "Iniciar"
         self.msg["text"] = ""
 
