@@ -12,6 +12,7 @@ board.digital[7].write(0)
 class screen:
     def __init__(self, master=None):
         window.title("Pomodoro project")
+        self.font = ("Arial", "10")
         self.color1 = "green"
         self.color2 = "orange"
         self.color3 = "red"
@@ -44,27 +45,27 @@ class screen:
         
 
         self.texto0 = Label(self.container0, text="Bem vindo ao Projeto pomodoro")
-        self.texto0["font"] = ("Arial", "10")
+        self.texto0["font"] = self.font
         self.texto0.pack()
 
         self.texto1 = Label(self.container1)
         self.texto1["width"] = 20
-        self.texto1["font"] = ("Arial", "10")
+        self.texto1["font"] = self.font
         self.texto1.pack()
         
         self.texto2 = Label(self.container2)
         self.texto2["width"] = 20
-        self.texto2["font"] = ("Arial", "10")
+        self.texto2["font"] = self.font
         self.texto2.pack()
 
         self.texto3 = Label(self.container3)
         self.texto3["width"] = 20
-        self.texto3["font"] = ("Arial", "10")
+        self.texto3["font"] = self.font
         self.texto3.pack()
 
         self.msg = Label(self.container4,width=15)
         self.msg["text"] = ""
-        self.msg["font"] = ("Arial", "10")
+        self.msg["font"] = self.font
         self.msg.pack()
 
         self.action = Button(self.container3)
