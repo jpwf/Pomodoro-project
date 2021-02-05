@@ -1,5 +1,12 @@
 from Tkinter import *
 from time import sleep
+from pyfirmata import Arduino, util
+
+board = Arduino('/dev/ttyUSB1')
+it = util.Iterator(board)
+it.start()
+board.digital[7].write(0)
+
 
 
 class screen:
@@ -28,54 +35,93 @@ class screen:
         self.container3["pady"] = 4
         self.container3.pack()
 
+        self.container4 = Frame(master)
+        self.container4["padx"] = 20
+        self.container4["pady"] = 4
+        self.container4.pack()
+
         
 
         self.texto0 = Label(self.container0, text="Bem vindo ao Projeto pomodoro")
         self.texto0["font"] = ("Arial", "10")
         self.texto0.pack()
 
-        self.texto1 = Label(self.container1, text="Primeiro container", bg="gray", width=20)
+        self.texto1 = Label(self.container1, text="Working....", bg="gray", width=20)
         self.texto1["font"] = ("Arial", "10")
         self.texto1.pack()
         
-        self.texto2 = Label(self.container2, text="Segundo container", bg="gray",width=20)
+        self.texto2 = Label(self.container2, text="Its break time!!!", bg="gray",width=20)
         self.texto2["font"] = ("Arial", "10")
         self.texto2.pack()
 
-        self.texto3 = Label(self.container3, text="Terceiro container", bg="gray",width=20)
+        self.texto3 = Label(self.container3, text="Finally finished", bg="gray",width=20)
         self.texto3["font"] = ("Arial", "10")
         self.texto3.pack()
 
+        self.msg = Label(self.container4, bg="white", width=15)
+        self.msg["text"] = ""
+        self.msg["font"] = ("Arial", "10")
+        self.msg.pack()
 
-        self.teste = Button(self.container3)
-        self.teste["text"] = "Trocar cor"
-        self.teste["font"] = ("Calibri", "9")
-        self.teste["width"] = 10
-        self.teste["command"] = self.c1
-        self.teste.pack()
+        self.action = Button(self.container3)
+        self.action["text"] = "Iniciar"
+        self.action["font"] = ("Calibri", "9")
+        self.action["width"] = 10
+        self.action["command"] = self.t1
+        self.action.pack()
 
     def c1(self):
-        sleep(3)
+        sleep(0.5)
+        
+        self.msg["text"] = "Press"
+        self.action["command"] = self.t1
+
+    def t1(self):
         self.texto1["background"] = self.color1
-        self.teste["command"] = self.c2
-    def c2(self):
-        sleep(3)
+        self.msg["text"] = "Work Time"
+        self.action["text"] = "Start Timer"
+        sleep(0.5)
+        self.action["command"] = self.timer1
+    def t2(self):
         self.texto2["background"] = self.color2
-        self.teste["command"] = self.c3
-    def c3(self):
-        sleep(3)
+        sleep(0.5)
+        self.action["text"] = "Press"
+        self.msg["text"] = "Break Time"
+
+    def timer1(self):
+        sleep(10)
+        board.digital[7].write(1)
+        sleep(0.08)
+        board.digital[7].write(0)
+        self.action["command"] = self.t2
+        self.msg["text"] = "Break"
+    def timer2(self):
+        sleep(10)
+        board.digital[7].write(1)
+        sleep(0.08)
+        board.digital[7].write(0)
+        self.action["command"] = self.timer3
+        self.action["text"] = "Next"
+        self.msg["text"] = "End"
+    def timer3(self):
         self.texto3["background"] = self.color3
-        self.teste["command"] = self.c0 
-    def c0(self):
-        sleep(1)
+        self.action["command"] = self.reset
+        self.msg["text"] = ""
+        self.action["text"] = "Finish"
+
+        
+    def reset(self):
+        sleep(0.5)
         self.texto1["background"] = self.color0
         self.texto2["background"] = self.color0
         self.texto3["background"] = self.color0
-
-
-        
+        self.action["command"] = self.c1
+        self.action["text"] = "Iniciar"
+        self.msg["text"] = ""
 
 
 window = Tk()
 screen(window)
 window.mainloop()
+
+
