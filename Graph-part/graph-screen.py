@@ -88,7 +88,7 @@ class screen:
         
 
     def timer1(self):
-        sleep(5)
+        sleep(5400)
         board.digital[7].write(1)
         sleep(0.08)
         board.digital[7].write(0)
@@ -101,7 +101,7 @@ class screen:
         self.texto2["text"] = "Its break time !!!"
         
     def timer2(self):
-        sleep(5)
+        sleep(1200)
         board.digital[7].write(1)
         sleep(0.08)
         board.digital[7].write(0)
