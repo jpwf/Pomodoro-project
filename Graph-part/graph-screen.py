@@ -2,7 +2,7 @@ from Tkinter import *
 from time import sleep
 from pyfirmata import Arduino, util
 
-board = Arduino('/dev/ttyUSB1')
+board = Arduino('/dev/ttyUSB0')
 it = util.Iterator(board)
 it.start()
 board.digital[7].write(0)
@@ -12,13 +12,14 @@ board.digital[7].write(0)
 class screen:
     def __init__(self, master=None):
         window.title("Pomodoro project")
-        self.color0 = "gray"
         self.color1 = "green"
         self.color2 = "orange"
         self.color3 = "red"
 
         self.container0 = Frame(master)
         self.container0.pack()
+
+        self.color0 = self.container0.cget("bg")
 
         self.container1 = Frame(master)
         self.container1["padx"] = 30
@@ -46,19 +47,22 @@ class screen:
         self.texto0["font"] = ("Arial", "10")
         self.texto0.pack()
 
-        self.texto1 = Label(self.container1, text="Working....", bg="gray", width=20)
+        self.texto1 = Label(self.container1)
+        self.texto1["width"] = 20
         self.texto1["font"] = ("Arial", "10")
         self.texto1.pack()
         
-        self.texto2 = Label(self.container2, text="Its break time!!!", bg="gray",width=20)
+        self.texto2 = Label(self.container2)
+        self.texto2["width"] = 20
         self.texto2["font"] = ("Arial", "10")
         self.texto2.pack()
 
-        self.texto3 = Label(self.container3, text="Finally finished", bg="gray",width=20)
+        self.texto3 = Label(self.container3)
+        self.texto3["width"] = 20
         self.texto3["font"] = ("Arial", "10")
         self.texto3.pack()
 
-        self.msg = Label(self.container4, bg="white", width=15)
+        self.msg = Label(self.container4,width=15)
         self.msg["text"] = ""
         self.msg["font"] = ("Arial", "10")
         self.msg.pack()
@@ -70,40 +74,44 @@ class screen:
         self.action["command"] = self.t1
         self.action.pack()
 
-    def c1(self):
-        sleep(0.5)
-        self.msg["text"] = "Press"
-        self.action["command"] = self.t1
+   
 
     def t1(self):
+        self.msg["background"] = "white"
         self.texto1["background"] = self.color1
+        self.texto1["text"] = "Working...."
         self.msg["text"] = "Work Time"
         self.action["text"] = "Start Timer"
         sleep(0.5)
         self.action["command"] = self.timer1
-    def t2(self):
-        self.texto2["background"] = self.color2
-        sleep(0.5)
-        self.action["text"] = "Press"
-        self.msg["text"] = "Break Time"
+        
 
     def timer1(self):
-        sleep(5400)
+        sleep(5)
         board.digital[7].write(1)
         sleep(0.08)
         board.digital[7].write(0)
-        self.action["command"] = self.t2
-        self.msg["text"] = "Break"
+        self.texto1["text"] = ""
+        self.texto1["background"] = self.color0
+        self.action["text"] = "Start timer"
+        self.action["command"] = self.timer2
+        self.texto2["background"] = self.color2
+        self.msg["text"] = "Break Time"
+        self.texto2["text"] = "Its break time !!!"
+        
     def timer2(self):
-        sleep(1200)
+        sleep(5)
         board.digital[7].write(1)
         sleep(0.08)
         board.digital[7].write(0)
+        self.texto2["text"] = ""
+        self.texto2["background"] = self.color0
         self.action["command"] = self.timer3
         self.action["text"] = "Next"
         self.msg["text"] = "End"
     def timer3(self):
         self.texto3["background"] = self.color3
+        self.texto3["text"] = "Finally done"
         self.action["command"] = self.reset
         self.msg["text"] = ""
         self.action["text"] = "Finish"
