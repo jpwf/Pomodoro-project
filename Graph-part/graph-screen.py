@@ -72,7 +72,6 @@ class screen:
 
     def c1(self):
         sleep(0.5)
-        
         self.msg["text"] = "Press"
         self.action["command"] = self.t1
 
@@ -89,14 +88,14 @@ class screen:
         self.msg["text"] = "Break Time"
 
     def timer1(self):
-        sleep(10)
+        sleep(5400)
         board.digital[7].write(1)
         sleep(0.08)
         board.digital[7].write(0)
         self.action["command"] = self.t2
         self.msg["text"] = "Break"
     def timer2(self):
-        sleep(10)
+        sleep(1200)
         board.digital[7].write(1)
         sleep(0.08)
         board.digital[7].write(0)
