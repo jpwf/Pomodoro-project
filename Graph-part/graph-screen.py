@@ -49,21 +49,22 @@ class screen:
         self.texto0.pack()
 
         self.texto1 = Label(self.container1)
-        self.texto1["width"] = 20
+        self.texto1["width"] = 22
         self.texto1["font"] = self.font
         self.texto1.pack()
         
         self.texto2 = Label(self.container2)
-        self.texto2["width"] = 20
+        self.texto2["width"] = 22
         self.texto2["font"] = self.font
         self.texto2.pack()
 
         self.texto3 = Label(self.container3)
-        self.texto3["width"] = 20
+        self.texto3["width"] = 22
         self.texto3["font"] = self.font
         self.texto3.pack()
 
-        self.msg = Label(self.container4,width=15)
+        self.msg = Label(self.container4)
+        self.msg["width"] = 15
         self.msg["text"] = ""
         self.msg["font"] = self.font
         self.msg.pack()
