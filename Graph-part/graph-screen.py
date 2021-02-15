@@ -1,11 +1,11 @@
 from Tkinter import *
 from time import sleep
-# from pyfirmata import Arduino, util
+from pyfirmata import Arduino, util
 
-# board = Arduino('/dev/ttyUSB0')
-# it = util.Iterator(board)
-# it.start()
-# board.digital[7].write(0)
+board = Arduino('/dev/ttyUSB0')
+it = util.Iterator(board)
+it.start()
+board.digital[7].write(0)
 
 
 
@@ -99,10 +99,10 @@ class screen:
         
 
     def timer1(self):
-        sleep(5)
-        # board.digital[7].write(1)
+        sleep(5400)
+        board.digital[7].write(1)
         sleep(0.08)
-        # board.digital[7].write(0)
+        board.digital[7].write(0)
         self.texto1["text"] = ""
         self.texto1["background"] = self.color0
         self.action["text"] = "Start timer"
@@ -112,10 +112,10 @@ class screen:
         self.texto2["text"] = "Its break time !!!"
         
     def timer2(self):
-        sleep(2)
-        # board.digital[7].write(1)
+        sleep(1200)
+        board.digital[7].write(1)
         sleep(0.08)
-        # board.digital[7].write(0)
+        board.digital[7].write(0)
         self.texto2["text"] = ""
         self.texto2["background"] = self.color0
         self.action["command"] = self.timer3
