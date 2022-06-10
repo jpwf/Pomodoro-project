@@ -7,7 +7,7 @@ it = util.Iterator(board)
 it.start()
 board.digital[7].write(0)
 
-minuto = 60
+
 
 class screen:
     def __init__(self, master=None):
@@ -99,12 +99,19 @@ class screen:
         
 
     def timer1(self):
-        sleep(5400)
-	#SLEEP(2400)
+        sleep(180)
         board.digital[7].write(1)
         sleep(0.3)
         board.digital[7].write(0)
+	sleep(0.3)
+	board.digital[7].write(1)
 
+	sleep(0.3)
+	board.digital[7].write(0)
+	sleep(0.3)
+	board.digital[7].write(1)
+	sleep(0.3)
+	board.digital[7].write(0)
         self.texto1["text"] = ""
         self.texto1["background"] = self.color0
         self.action["text"] = "Start timer"
@@ -118,6 +125,14 @@ class screen:
         board.digital[7].write(1)
         sleep(0.3)
         board.digital[7].write(0)
+	sleep(0.3)
+	board.digital[7].write(1)
+	sleep(0.3)
+	board.digital[7].write(0)
+	sleep(0.3)
+	board.digital[7].write(1)
+	sleep(0.3)
+	board.digital[7].write(0)
         self.texto2["text"] = ""
         self.texto2["background"] = self.color0
         self.action["command"] = self.timer3

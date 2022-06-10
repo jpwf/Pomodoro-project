@@ -1,13 +1,19 @@
+#coding: utf-8
+from playsound import playsound
+# from pydub import AudioSegment
+# from pydub.playback import play
+# import tkSnack
+# tkSnack.initializeSack(root)
+# snd = tkSnack.Sound()
+# snd.read('../Audio.wav')
+
+
 from Tkinter import *
 from time import sleep
-from pyfirmata import Arduino, util
 
-board = Arduino('/dev/ttyUSB0')
-it = util.Iterator(board)
-it.start()
-board.digital[7].write(0)
+mp3file = "/Alarm2.m4a"
+# music = AudioSegment.from_mp3(mp3file)
 
-minuto = 60
 
 class screen:
     def __init__(self, master=None):
@@ -49,7 +55,6 @@ class screen:
         self.container5["pady"] = 8
         self.container5.pack()
 
-        
 
         self.texto0 = Label(self.container0, text="Bem vindo ao Projeto pomodoro")
         self.texto0["font"] = ("Arial", "20")
@@ -94,17 +99,15 @@ class screen:
         self.texto1["text"] = "Working...."
         self.msg["text"] = "Work Time"
         self.action["text"] = "Start Timer"
-        sleep(0.3)
+        sleep(0.5)
         self.action["command"] = self.timer1
         
 
     def timer1(self):
-        sleep(5400)
-	#SLEEP(2400)
-        board.digital[7].write(1)
-        sleep(0.3)
-        board.digital[7].write(0)
-
+        sleep(25*60)
+        #usar o playsound
+        playsound(mp3file)
+        # snd.play(blocking=1)
         self.texto1["text"] = ""
         self.texto1["background"] = self.color0
         self.action["text"] = "Start timer"
@@ -114,10 +117,10 @@ class screen:
         self.texto2["text"] = "Its break time !!!"
         
     def timer2(self):
-        sleep(1200)
-        board.digital[7].write(1)
-        sleep(0.3)
-        board.digital[7].write(0)
+        sleep(5*60)
+        playsound(mp3file)
+        # snd.play(blocking=1)
+        #usar o playsound
         self.texto2["text"] = ""
         self.texto2["background"] = self.color0
         self.action["command"] = self.timer3
@@ -133,7 +136,7 @@ class screen:
 
         
     def reset(self):
-        sleep(0.3)
+        sleep(0.5)
         self.texto1["background"] = self.color0
         self.texto2["background"] = self.color0
         self.texto3["background"] = self.color0
@@ -146,5 +149,3 @@ class screen:
 window = Tk()
 screen(window)
 window.mainloop()
-
-

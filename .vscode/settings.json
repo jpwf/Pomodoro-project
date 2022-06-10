@@ -1,8 +1,13 @@
 {
     "python.linting.pylintEnabled": false,
+<<<<<<< HEAD
     "python.linting.pylamaEnabled": false,
     "python.linting.enabled": true,
     "python.pythonPath": "/usr/local/bin/python3",
     "python.linting.banditEnabled": false,
     "python.linting.mypyEnabled": true
+=======
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
+>>>>>>> producing
 }
