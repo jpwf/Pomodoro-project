@@ -1,18 +1,9 @@
 #coding: utf-8
 from playsound import playsound
-# from pydub import AudioSegment
-# from pydub.playback import play
-# import tkSnack
-# tkSnack.initializeSack(root)
-# snd = tkSnack.Sound()
-# snd.read('../Audio.wav')
-
-
 from Tkinter import *
 from time import sleep
 
-mp3file = "/Alarm2.m4a"
-# music = AudioSegment.from_mp3(mp3file)
+mp3file = "Alarm2.m4a"
 
 
 class screen:
@@ -101,13 +92,10 @@ class screen:
         self.action["text"] = "Start Timer"
         sleep(0.5)
         self.action["command"] = self.timer1
-        
 
     def timer1(self):
-        sleep(25*60)
-        #usar o playsound
+        sleep(2700)
         playsound(mp3file)
-        # snd.play(blocking=1)
         self.texto1["text"] = ""
         self.texto1["background"] = self.color0
         self.action["text"] = "Start timer"
@@ -115,12 +103,11 @@ class screen:
         self.texto2["background"] = self.color2
         self.msg["text"] = "Break Time"
         self.texto2["text"] = "Its break time !!!"
-        
+	sleep(0.5)
+
     def timer2(self):
-        sleep(5*60)
+        sleep(600)
         playsound(mp3file)
-        # snd.play(blocking=1)
-        #usar o playsound
         self.texto2["text"] = ""
         self.texto2["background"] = self.color0
         self.action["command"] = self.timer3
