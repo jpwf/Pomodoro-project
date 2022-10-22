@@ -11,5 +11,5 @@ O objetivo desse projeto era trazer a técnica de [pomodoro](https://pt.wikipedi
 Os valores de tempo usados estão em segundos. Diferente do pomodoro original, o tempo de trabalho está configurado em 45 minutos com intervalos de 10 minutos
 
 
-### Para facilitar o processo eu criei um arquivo para automatizar a instalação das bibliotecas necessárias e logo depois rodar o script da interface gráfica.
+### Para facilitar o processo eu criei um arquivo que automatiza a instalação das bibliotecas necessárias e logo depois roda o script da interface gráfica.
 Você só precisa clonar o repositório, ir para a pasta "Virtual" e rodar o script "run.py", responder se quer ou não instalar as bibliotecas e pronto.
