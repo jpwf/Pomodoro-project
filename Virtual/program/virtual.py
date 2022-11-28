@@ -94,7 +94,7 @@ class screen:
         self.action["command"] = self.timer1
 
     def timer1(self):
-        sleep(2700)
+        sleep(1)
         playsound(mp3file)
         self.texto1["text"] = ""
         self.texto1["background"] = self.color0
@@ -106,7 +106,7 @@ class screen:
 	sleep(0.5)
 
     def timer2(self):
-        sleep(600)
+        sleep(1)
         playsound(mp3file)
         self.texto2["text"] = ""
         self.texto2["background"] = self.color0
